@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <!-- Mirrored from gambolthemes.net/workwise-new/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 23 Jun 2021 15:33:58 GMT -->
+  <head>
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" type="text/css" href="../static/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/line-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/line-awesome-font-awesome.min.css">
+    <link href="../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/lib/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="../static/lib/slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/responsive.css">
+  </head>
+  <body class="sign-in" oncontextmenu="return false;" style="background-color:#2A3F54 !important">
+    <div class="wrapper" style="background-color:#2A3F54 !important">
+      <div class="sign-in-page" style="background-color:#2A3F54 !important">
+        <div class="signin-popup">
+          <div class="signin-pop">
+            <div class="row">
+            
+              <div class="col-md-12">
+                <div class="login-sec">
+                  <ul class="sign-control">
+                    <li data-tab="tab-1" class="current">
+                      <a href="#" title="">Sign in</a>
+                    </li>
+                 
+                    
+                   
+                  </ul>
+
+
+                  <div class="sign_in_sec current" id="tab-1">
+                      {% with messages = get_flashed_messages(with_categories=true) %}
+                      {% if messages %}
+                        {% for category, message in messages %}
+                          <div class="alert alert-{{ category }}">
+                            {{ message }}
+                          </div>
+                        {% endfor %}
+                      {% endif %}
+                    {% endwith %}
+                    <h3>Sign in</h3>
+
+                    <form action="{{ url_for('login')}}" method="post">
+                      <div class="row">
+                        <div class="col-lg-12 no-pdd">
+                          <div class="sn-field">
+                           {% if form.email.errors %}
+                             {{ form.email(class="form-control form-control-lg is-invalid", placeholder="Enter Your Email") }}
+                             <div class="invalid-feedback">
+                             {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                             {% endfor %}
+                              </div>
+                          {% else %}
+                            {{ form.email(class="form-control form-control-lg", placeholder="Enter Your Email") }}
+                          {% endif %}
+                            <i class="la la-user"></i>
+                          </div>
+                        </div>
+                        <div class="col-lg-12 no-pdd">
+                          <div class="sn-field">
+                           {% if form.password.errors %}
+                                {{ form.password(class="form-control form-control-lg is-invalid", placeholder="*****") }}
+                                 <div class="invalid-feedback">
+                                  {% for error in form.password.errors %}
+                                      <span>{{ error }}</span>
+                                  {% endfor %}
+                                </div>
+                            {% else %}
+
+                            {{ form.password(class="form-control form-control-lg", placeholder="*****") }}
+                          {% endif %}
+                            <i class="la la-lock"></i>
+                          </div>
+                        </div>
+                        <div class="col-lg-12 no-pdd">
+                            
+                            {{ form.submit(class="btn btn-outline-info") }}
+                        </div>
+                      </div>
+                    </form>
+                    <br>
+                    <a href="{{ url_for('Signup') }}">Don't have an account</a>
+                  </div>
+
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script data-cfasync="false" src="../static/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/popper.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/lib/slick/slick.min.js"></script>
+    <script type="text/javascript" src="../static/js/script.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script> {% with messages = get_flashed_messages() %} {% if messages %} <script>
+      var messages = {
+        {
+          messages | safe
+        }
+      };
+      Swal.fire(messages[1], messages[0], messages[2]);
+    </script> {% endif %} {% endwith %}
+  </body>
+</html>
